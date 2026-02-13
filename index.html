@@ -3,214 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apex Quant Systems</title>
+<title>Apex Quant Systems | Algorithmic Trading Intelligence</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;.metrics {
+    display: flex;
+    justify-content: space-around;
+    padding: 80px 10%;
+    background-color: #081933;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.metric {
+    margin: 20px;
+}
+
+.metric h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #2962FF;
+    margin-bottom: 10px;
+}
+
+.metric p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+    
 }
 
 body {
-    background: #0b1120;
+    background-color: #0A1F44;
     color: #ffffff;
+    line-height: 1.6;
 }
 
-nav {
-    position: fixed;
-    width: 100%;
-    padding: 20px 60px;
+header {
+    padding: 30px 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(11,17,32,0.9);
-    backdrop-filter: blur(10px);
 }
 
-nav h2 {
-    font-weight: 700;
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
-nav a {
+.logo span {
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+nav a, select {
+    color: #ffffff;
     text-decoration: none;
-    color: #cbd5e1;
     margin-left: 25px;
-    font-weight: 500;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+nav a:hover {
+    color: #2962FF;
 }
 
 .hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 10%;
-    background: radial-gradient(circle at 20% 50%, #1e3a8a, #0b1120 60%);
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    max-width: 800px;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-.hero p {
-    margin-top: 20px;
-    max-width: 600px;
-    color: #94a3b8;
-    font-size: 1.1rem;
-}
-
-.btn {
-    margin-top: 30px;
-    padding: 15px 35px;
-    border-radius: 50px;
-    background: #3b82f6;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-    display: inline-block;
-}
-
-.btn:hover {
-    background: #2563eb;
-    transform: translateY(-3px);
-}
-
-section {
+    text-align: center;
     padding: 120px 10%;
 }
 
-.metrics {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-align: center;
+.hero h1 {
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
-.metric h3 {
-    font-size: 2rem;
-    color: #3b82f6;
+.hero p {
+    font-size: 18px;
+    font-weight: 300;
+    max-width: 700px;
+    margin: auto;
+    opacity: 0.85;
 }
 
-.cards {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 60px;
-}
-
-.card {
-    background: #111827;
-    padding: 40px;
-    border-radius: 20px;
-    flex: 1;
-    min-width: 280px;
+.btn-primary {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 14px 40px;
+    background-color: #2962FF;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
     transition: 0.3s;
 }
 
-.card:hover {
-    background: #1f2937;
-    transform: translateY(-8px);
+.btn-primary:hover {
+    background-color: #1e4ed8;
 }
 
 footer {
-    padding: 40px;
     text-align: center;
-    background: #0b1120;
-    color: #64748b;
+    padding: 40px 10%;
+    font-size: 14px;
+    opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-    <h2>Apex Quant Systems</h2>
-    <div>
-        <a href="#tecnologia">Tecnología</a>
-        <a href="#metodologia">Metodología</a>
-        <a href="#contacto">Contacto</a>
+<header>
+    <div class="logo">
+        APEX <span>QUANT SYSTEMS</span>
     </div>
-</nav>
 
-<div class="hero">
-    <h1>Ingeniería Cuantitativa para el Trading del Futuro</h1>
-    <p>Sistemas algorítmicos diseñados con enfoque en datos, automatización inteligente y control de riesgo avanzado.</p>
-    <a href="#contacto" class="btn">Solicitar Información</a>
-</div>
+    <nav>
+        <a href="#" id="navHome">Inicio</a>
+        <a href="#" id="navStrategy">Estrategia</a>
+        <a href="#" id="navPerformance">Rendimiento</a>
+        <a href="#" id="navContact">Contacto</a>
 
-<section>
-    <div class="metrics">
-        <div class="metric">
-            <h3>24/7</h3>
-            <p>Automatización continua</p>
-        </div>
-        <div class="metric">
-            <h3>Data-Driven</h3>
-            <p>Decisiones basadas en datos</p>
-        </div>
-        <div class="metric">
-            <h3>Risk-Control</h3>
-            <p>Gestión cuantitativa</p>
-        </div>
-    </div>
+        <select onchange="changeLanguage(this.value)">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+        </select>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1 id="heroTitle">Precision. Performance. Algorithmic Intelligence.</h1>
+    <p id="heroText">
+        Apex Quant Systems desarrolla modelos avanzados de trading algorítmico
+        enfocados en optimización cuantitativa, gestión disciplinada del riesgo
+        y ejecución automatizada en mercados digitales.
+    </p>
+
+    <a href="#" class="btn-primary" id="heroButton">Comenzar</a>
 </section>
 
-<section id="tecnologia">
-    <h2>Tecnología</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Arquitectura Algorítmica</h3>
-            <p>Desarrollo estructurado de sistemas cuantitativos con optimización avanzada.</p>
-        </div>
+<section class="metrics">
+    <div class="metric">
+        <h2>+38.4%</h2>
+        <p id="metric1">Retorno acumulado anual (backtested)</p>
+    </div>
 
-        <div class="card">
-            <h3>Backtesting Profesional</h3>
-            <p>Validación histórica robusta para evaluar consistencia y eficiencia.</p>
-        </div>
+    <div class="metric">
+        <h2>1.87</h2>
+        <p id="metric2">Ratio Sharpe</p>
+    </div>
 
-        <div class="card">
-            <h3>Automatización Inteligente</h3>
-            <p>Implementación de ejecución automática con monitoreo continuo.</p>
-        </div>
+    <div class="metric">
+        <h2>-8.2%</h2>
+        <p id="metric3">Drawdown máximo histórico</p>
+    </div>
+
+    <div class="metric">
+        <h2>92ms</h2>
+        <p id="metric4">Tiempo promedio de ejecución</p>
     </div>
 </section>
-
-<section id="metodologia">
-    <h2>Metodología</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>1. Investigación</h3>
-            <p>Análisis cuantitativo y evaluación estadística de estrategias.</p>
-        </div>
-
-        <div class="card">
-            <h3>2. Desarrollo</h3>
-            <p>Programación y optimización de modelos algorítmicos.</p>
-        </div>
-
-        <div class="card">
-            <h3>3. Implementación</h3>
-            <p>Despliegue automatizado con monitoreo de riesgo en tiempo real.</p>
-        </div>
-    </div>
-</section>
-
-<section id="contacto">
-    <h2>Contacto Estratégico</h2>
-    <p>¿Interesado en sistemas cuantitativos personalizados?</p>
-    <a href="mailto:pedrosanchezcastillo11@gmail.com" class="btn">Contactar</a>
-</section>
-
-<footer>
-© 2026 Apex Quant Systems | Algorithmic Trading Technology
+    <footer id="footerText">
+    © 2026 Apex Quant Systems. Todos los derechos reservados.
 </footer>
+
+<script>
+function changeLanguage(lang) {
+    if (lang === "en") {
+        document.documentElement.lang = "en";
+        document.getElementById("navHome").innerText = "Home";
+        document.getElementById("navStrategy").innerText = "Strategy";
+        document.getElementById("navPerformance").innerText = "Performance";
+        document.getElementById("navContact").innerText = "Contact";
+        document.getElementById("heroTitle").innerText = "Precision. Performance. Algorithmic Intelligence.";
+        document.getElementById("heroText").innerText =
+            "Apex Quant Systems develops advanced algorithmic trading models focused on quantitative optimization, disciplined risk management, and automated execution in digital markets.";
+        document.getElementById("heroButton").innerText = "Get Started";
+        document.getElementById("footerText").innerText =
+            "© 2026 Apex Quant Systems. All rights reserved.";document.getElementById("metric1").innerText = "Annual cumulative return (backtested)";
+document.getElementById("metric2").innerText = "Sharpe Ratio";
+document.getElementById("metric3").innerText = "Maximum historical drawdown";
+document.getElementById("metric4").innerText = "Average execution latency";
+        
+    } else {
+        document.documentElement.lang = "es";
+        document.getElementById("navHome").innerText = "Inicio";
+        document.getElementById("navStrategy").innerText = "Estrategia";
+        document.getElementById("navPerformance").innerText = "Rendimiento";
+        document.getElementById("navContact").innerText = "Contacto";
+        document.getElementById("heroTitle").innerText = "Precision. Performance. Algorithmic Intelligence.";
+        document.getElementById("heroText").innerText =
+            "Apex Quant Systems desarrolla modelos avanzados de trading algorítmico enfocados en optimización cuantitativa, gestión disciplinada del riesgo y ejecución automatizada en mercados digitales.";
+        document.getElementById("heroButton").innerText = "Comenzar";
+        document.getElementById("footerText").innerText =
+            "© 2026 Apex Quant Systems. Todos los derechos reservados.";document.getElementById("metric1").innerText = "Retorno acumulado anual (backtested)";
+document.getElementById("metric2").innerText = "Ratio Sharpe";
+document.getElementById("metric3").innerText = "Drawdown máximo histórico";
+document.getElementById("metric4").innerText = "Tiempo promedio de ejecución";
+        
+    }
+}
+</script>
 
 </body>
 </html>
