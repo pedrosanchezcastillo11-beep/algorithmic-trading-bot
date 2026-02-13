@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Dashboard | Apex Quant Systems</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #0A1F44;
+    color: white;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #081933;
+    padding: 30px;
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.sidebar a:hover {
+    opacity: 1;
+    color: #2962FF;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 40px;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #081933;
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 220px;
+    flex: 1;
+}
+
+.card h3 {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 28px;
+    color: #2962FF;
+}
+
+.chart {
+    margin-top: 50px;
+    background-color: #081933;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    left: 280px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>AQS Client</h2>
+    <a href="#">Resumen</a>
+    <a href="#">Rendimiento</a>
+    <a href="#">Historial</a>
+    <a href="#">Configuración</a>
+    <a href="index.html">Cerrar sesión</a>
+</div>
+
+<div class="main">
+
+    <div class="header">
+        <h1>Panel de Control</h1>
+        <p>Bienvenido al sistema cuantitativo institucional.</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Capital Actual</h3>
+            <h2>$12,480.35</h2>
+        </div>
+
+        <div class="card">
+            <h3>Rendimiento Mensual</h3>
+            <h2>+4.2%</h2>
+        </div>
+
+        <div class="card">
+            <h3>Riesgo Activo</h3>
+            <h2>Moderado</h2>
+        </div>
+
+        <div class="card">
+            <h3>Operaciones Ejecutadas</h3>
+            <h2>184</h2>
+        </div>
+    </div>
+
+    <div class="chart">
+        <h3>Rendimiento Histórico (Simulado)</h3>
+        <p style="opacity:0.7; margin-top:15px;">
+            Gráfico interactivo próximamente.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Apex Quant Systems. Internal Dashboard.
+</footer>
+
+</body>
+</html>
