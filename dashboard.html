@@ -143,11 +143,12 @@ footer {
     </div>
 
     <div class="chart">
-        <h3>Rendimiento Histórico (Simulado)</h3>
-        <p style="opacity:0.7; margin-top:15px;">
-            Gráfico interactivo próximamente.
-        </p>
+    <h3>Rendimiento Histórico (Simulado)</h3>
+    <p style="opacity:0.7; margin-top:15px;">
+        Gráfico interactivo próximamente.
+    </p>
     </div>
+    
 
 </div>
 
@@ -155,5 +156,40 @@ footer {
     © 2026 Apex Quant Systems. Internal Dashboard.
 </footer>
 
-</body>
+</body <script>
+const ctx = document.getElementById('performanceChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago'],
+        datasets: [{
+            label: 'Capital Growth',
+            data: [10000, 10250, 10480, 10720, 11000, 11250, 11580, 12480],
+            borderColor: '#2962FF',
+            backgroundColor: 'rgba(41,98,255,0.1)',
+            tension: 0.3,
+            fill: true
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#ffffff'
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: { color: '#ffffff' }
+            },
+            y: {
+                ticks: { color: '#ffffff' }
+            }
+        }
+    }
+});
+</script>
+    >
 </html>
