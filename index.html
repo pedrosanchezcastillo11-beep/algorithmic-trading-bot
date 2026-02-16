@@ -178,7 +178,54 @@ nav a{
         y análisis cuantitativo en tiempo real.
     </p>
 </section>
+    <section class="section fade-in" id="login-section">
+    <h2>Investor Access</h2>
+    <div style="margin-top:30px;">
+        <input type="text" id="user" placeholder="Usuario" 
+        style="padding:10px; width:200px; margin:10px;">
+        <input type="password" id="pass" placeholder="Contraseña" 
+        style="padding:10px; width:200px; margin:10px;">
+        <br>
+        <button onclick="login()" class="mode-btn">Acceder</button>
+    </div>
+</section>
 
+<section class="section" id="dashboard" style="display:none;">
+    <h2>Investor Dashboard</h2>
+    <canvas id="performanceChart" width="600" height="300"></canvas>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+function login() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+
+    if (user === "admin" && pass === "1234") {
+        document.getElementById("login-section").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+        loadChart();
+    } else {
+        alert("Credenciales incorrectas");
+    }
+}
+
+function loadChart() {
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Rendimiento %',
+                data: [5, 8, 6, 12, 15, 18],
+                borderWidth: 2,
+                tension: 0.3
+            }]
+        }
+    });
+}
+    
 <script>
 /* CONTADORES */
 const counters = document.querySelectorAll('.counter');
