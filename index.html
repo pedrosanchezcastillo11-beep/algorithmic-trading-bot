@@ -179,87 +179,89 @@ nav a{
 
 <script>
 
-// LOGIN DEMO
-function login() {
-    const user = document.getElementById("user").value;
-    const pass = document.getElementById("pass").value;
+// Esperar a que cargue todo el DOM
+document.addEventListener("DOMContentLoaded", function(){
 
-    if (user.length > 0 && pass.length > 0) {
-        document.getElementById("login-section").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-        loadChart();
-    } else {
-        alert("Ingrese usuario y contraseña");
-    }
-}
+    // LOGIN
+    window.login = function() {
+        const user = document.getElementById("user").value.trim();
+        const pass = document.getElementById("pass").value.trim();
 
-// CHART PROFESIONAL
-function loadChart() {
-    const ctx = document.getElementById("performanceChart");
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
-            datasets: [{
-                label: 'Rendimiento %',
-                data: [5, 8, 6, 12, 15, 18],
-                borderColor: '#00f5ff',
-                backgroundColor: 'rgba(0,245,255,0.1)',
-                fill: true,
-                borderWidth: 2,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: { color: '#c9d1d9' }
-                }
-            },
-            scales: {
-                x: { ticks: { color: '#c9d1d9' } },
-                y: { ticks: { color: '#c9d1d9' } }
-            }
+        if(user !== "" && pass !== ""){
+            document.getElementById("login-section").style.display = "none";
+            document.getElementById("dashboard").style.display = "block";
+            loadChart();
+        } else {
+            alert("Ingrese usuario y contraseña");
         }
-    });
-}
+    }
 
-// CONTADORES ANIMADOS
-const counters = document.querySelectorAll('.counter');
+    // CHART
+    function loadChart(){
+        const ctx = document.getElementById("performanceChart");
 
-counters.forEach(counter => {
-    const updateCount = () => {
+        if(!ctx) return;
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Ene','Feb','Mar','Abr','May','Jun'],
+                datasets: [{
+                    label: 'Rendimiento %',
+                    data: [5,8,6,12,15,18],
+                    borderColor:'#00f5ff',
+                    backgroundColor:'rgba(0,245,255,0.1)',
+                    fill:true,
+                    tension:0.4
+                }]
+            },
+            options:{
+                responsive:true,
+                plugins:{
+                    legend:{ labels:{ color:'#c9d1d9' } }
+                },
+                scales:{
+                    x:{ ticks:{ color:'#c9d1d9' }},
+                    y:{ ticks:{ color:'#c9d1d9' }}
+                }
+            }
+        });
+    }
+
+    // CONTADORES
+    const counters = document.querySelectorAll('.counter');
+
+    counters.forEach(counter=>{
         const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText.replace(/,/g,'');
-
+        let count = 0;
         const increment = target / 80;
 
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment).toLocaleString();
-            setTimeout(updateCount, 20);
-        } else {
-            counter.innerText = target.toLocaleString();
+        const update = ()=>{
+            if(count < target){
+                count += increment;
+                counter.innerText = Math.ceil(count).toLocaleString();
+                requestAnimationFrame(update);
+            } else {
+                counter.innerText = target.toLocaleString();
+            }
         }
-    };
-
-    updateCount();
-});
-
-// FADE IN
-const faders = document.querySelectorAll('.fade-in');
-
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
+        update();
     });
-});
 
-faders.forEach(fader=>{
-    observer.observe(fader);
+    // FADE IN
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('show');
+            }
+        });
+    });
+
+    faders.forEach(fader=>{
+        observer.observe(fader);
+    });
+
 });
 
 // MODO CLARO
@@ -268,6 +270,6 @@ function toggleMode(){
 }
 
 </script>
-
+    
 </body>
 </html>
