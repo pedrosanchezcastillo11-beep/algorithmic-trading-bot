@@ -140,17 +140,17 @@ nav a{
 <section class="stats">
     <div class="stat-card">
         <h3>Capital Gestionado</h3>
-        <div class="counter">1,250,000</div>
+        <div class="counter" data-target="1250000">0</div>
     </div>
 
     <div class="stat-card">
         <h3>ROI Mensual</h3>
-        <div class="counter">12%</div>
+        <div class="counter" data-target="12">0</div>
     </div>
 
     <div class="stat-card">
         <h3>Usuarios Activos</h3>
-        <div class="counter">348</div>
+        <div class="counter" data-target="348">0</div>
     </div>
 </section>
 
@@ -179,21 +179,21 @@ nav a{
 
 <script>
 
-// LOGIN
+// LOGIN DEMO
 function login() {
     const user = document.getElementById("user").value;
     const pass = document.getElementById("pass").value;
 
-    if (user === "admin" && pass === "1234") {
+    if (user.length > 0 && pass.length > 0) {
         document.getElementById("login-section").style.display = "none";
         document.getElementById("dashboard").style.display = "block";
         loadChart();
     } else {
-        alert("Credenciales incorrectas");
+        alert("Ingrese usuario y contraseña");
     }
 }
 
-// CHART
+// CHART PROFESIONAL
 function loadChart() {
     const ctx = document.getElementById("performanceChart");
 
@@ -204,12 +204,48 @@ function loadChart() {
             datasets: [{
                 label: 'Rendimiento %',
                 data: [5, 8, 6, 12, 15, 18],
+                borderColor: '#00f5ff',
+                backgroundColor: 'rgba(0,245,255,0.1)',
+                fill: true,
                 borderWidth: 2,
-                tension: 0.3
+                tension: 0.4
             }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: { color: '#c9d1d9' }
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#c9d1d9' } },
+                y: { ticks: { color: '#c9d1d9' } }
+            }
         }
     });
 }
+
+// CONTADORES ANIMADOS
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText.replace(/,/g,'');
+
+        const increment = target / 80;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment).toLocaleString();
+            setTimeout(updateCount, 20);
+        } else {
+            counter.innerText = target.toLocaleString();
+        }
+    };
+
+    updateCount();
+});
 
 // FADE IN
 const faders = document.querySelectorAll('.fade-in');
