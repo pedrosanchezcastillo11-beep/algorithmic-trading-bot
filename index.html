@@ -234,7 +234,19 @@ function loadChart() {
         }
     });
 }
-    
+  // ===== CONTADORES DINÁMICOS =====
+document.addEventListener("DOMContentLoaded", function () {
+
+    let capital = 1250000;
+    let roi = 18;
+    let usuarios = 347;
+
+    document.getElementById("capital").innerText = capital.toLocaleString();
+    document.getElementById("roi").innerText = roi + "%";
+    document.getElementById("usuarios").innerText = usuarios;
+
+});
+  
 <script>
 const faders = document.querySelectorAll('.fade-in');
 
