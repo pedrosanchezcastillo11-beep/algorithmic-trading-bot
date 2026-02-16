@@ -202,8 +202,11 @@ body {
 .counter {
     font-size: 32px;
     font-weight: bold;
-    color: #00ffcc;
+    color: #00f5ff;
+    text-shadow: 0 0 10px #00f5ff;
 }
+    
+
 </style>
 
 <script>
@@ -212,19 +215,37 @@ const counters = document.querySelectorAll('.counter');
 counters.forEach(counter => {
     const updateCount = () => {
         const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText.replace(/[^0-9.]/g, '');
+        const count = +counter.innerText.replace(/,/g, '').replace('%', '');
+
         const increment = target / 200;
 
-        if(count < target) {
-            counter.innerText = Math.ceil(count + increment).toLocaleString();
-            if(counter.innerText.includes(".")) {
-                counter.innerText = (count + increment).toFixed(1);
+        if (count < target) {
+            let newCount = Math.ceil(count + increment);
+
+            if (newCount > target) {
+                newCount = target;
             }
+
+            // Formato con separador de miles
+            if (counter.getAttribute('data-target') >= 1000) {
+                counter.innerText = newCount.toLocaleString();
+            } else {
+                counter.innerText = newCount;
+            }
+
+            // Si es porcentaje
+            if (counter.innerText.includes('%') || counter.getAttribute('data-target') <= 100) {
+                if (counter.previousElementSibling.innerText.includes('ROI')) {
+                    counter.innerText = newCount + '%';
+                }
+            }
+
             setTimeout(updateCount, 15);
         } else {
-            counter.innerText = target.toLocaleString();
-            if(counter.getAttribute('data-target').includes('.')) {
-                counter.innerText = target + "%";
+            if (counter.previousElementSibling.innerText.includes('ROI')) {
+                counter.innerText = target + '%';
+            } else {
+                counter.innerText = target.toLocaleString();
             }
         }
     };
@@ -232,6 +253,7 @@ counters.forEach(counter => {
     updateCount();
 });
 </script>
+
     
 </body>
 </html>
