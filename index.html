@@ -10,14 +10,14 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
     background:#0a0f19;
     color:#c9d1d9;
     padding-top:80px;
-    transition: all 0.4s ease;
+    transition:all 0.4s ease;
 }
 
 /* NAVBAR */
@@ -35,9 +35,7 @@ nav{
     z-index:1000;
 }
 
-nav h2{
-    color:#00f5ff;
-}
+nav h2{ color:#00f5ff; }
 
 nav ul{
     list-style:none;
@@ -72,11 +70,6 @@ nav a{
     margin-bottom:20px;
 }
 
-.hero p{
-    font-size:18px;
-    opacity:0.8;
-}
-
 /* STATS */
 .stats{
     display:flex;
@@ -99,7 +92,6 @@ nav a{
     font-size:32px;
     font-weight:bold;
     color:#00f5ff;
-    text-shadow:0 0 10px #00f5ff;
 }
 
 /* SECTION */
@@ -108,7 +100,7 @@ nav a{
     text-align:center;
 }
 
-/* SCROLL ANIMATION */
+/* FADE */
 .fade-in{
     opacity:0;
     transform:translateY(40px);
@@ -124,15 +116,6 @@ nav a{
 .light-mode{
     background:#f5f7fa;
     color:#111;
-}
-
-.light-mode nav{
-    background:rgba(255,255,255,0.8);
-}
-
-.light-mode .stat-card{
-    background:white;
-    box-shadow:0 0 15px rgba(0,0,0,0.1);
 }
 </style>
 </head>
@@ -157,26 +140,22 @@ nav a{
 <section class="stats">
     <div class="stat-card">
         <h3>Capital Gestionado</h3>
-        <div class="counter" data-target="1250000">0</div>
+        <div class="counter">1,250,000</div>
     </div>
 
     <div class="stat-card">
         <h3>ROI Mensual</h3>
-        <div class="counter" data-target="12">0</div>
+        <div class="counter">12%</div>
     </div>
 
     <div class="stat-card">
         <h3>Usuarios Activos</h3>
-        <div class="counter" data-target="348">0</div>
+        <div class="counter">348</div>
     </div>
 </section>
 
 <section class="section fade-in">
     <h2>Infraestructura Tecnológica</h2>
-    <p style="margin-top:20px; opacity:0.7;">
-        Servidores dedicados de baja latencia, ejecución algorítmica
-        y análisis cuantitativo en tiempo real.
-    </p>
 </section>
 
 <section class="section fade-in" id="login-section">
@@ -195,21 +174,15 @@ nav a{
     <h2>Investor Dashboard</h2>
     <canvas id="performanceChart" width="600" height="300"></canvas>
 </section>
-    
-
-<section class="section" id="dashboard" style="display:none;">
-    <h2>Investor Dashboard</h2>
-    <canvas id="performanceChart" width="600" height="300"></canvas>
-</section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 
-// ================= LOGIN =================
+// LOGIN
 function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
 
     if (user === "admin" && pass === "1234") {
         document.getElementById("login-section").style.display = "none";
@@ -220,7 +193,7 @@ function login() {
     }
 }
 
-// ================= CHART =================
+// CHART
 function loadChart() {
     const ctx = document.getElementById("performanceChart");
 
@@ -238,42 +211,27 @@ function loadChart() {
     });
 }
 
-// ================= CONTADORES =================
-document.addEventListener("DOMContentLoaded", function () {
-
-    let capital = 1250000;
-    let roi = 18;
-    let usuarios = 347;
-
-    document.getElementById("capital").innerText = capital.toLocaleString();
-    document.getElementById("roi").innerText = roi + "%";
-    document.getElementById("usuarios").innerText = usuarios;
-
-});
-
-// ================= FADE IN =================
+// FADE IN
 const faders = document.querySelectorAll('.fade-in');
 
-const appearOptions = {
-    threshold: 0.2
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
     });
-}, appearOptions);
-
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
 });
 
-        </script>
-    
-    
+faders.forEach(fader=>{
+    observer.observe(fader);
+});
+
+// MODO CLARO
+function toggleMode(){
+    document.body.classList.toggle("light-mode");
+}
+
+</script>
 
 </body>
 </html>
