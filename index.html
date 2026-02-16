@@ -149,12 +149,12 @@ nav a{
     <button onclick="toggleMode()" class="mode-btn">🌙</button>
 </nav>
 
-<section class="hero fade-in">
+<section class="hero">
     <h1>Algorithmic Trading Infrastructure</h1>
     <p>Gestión cuantitativa avanzada con ejecución automatizada</p>
 </section>
 
-<section class="stats fade-in">
+<section class="stats">
     <div class="stat-card">
         <h3>Capital Gestionado</h3>
         <div class="counter" data-target="1250000">0</div>
@@ -236,44 +236,28 @@ function loadChart() {
 }
     
 <script>
-/* CONTADORES */
-const counters = document.querySelectorAll('.counter');
+const faders = document.querySelectorAll('.fade-in');
 
-counters.forEach(counter => {
-    const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / 100;
+const appearOptions = {
+    threshold: 0.2
+};
 
-        if(count < target){
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(updateCount, 20);
-        } else{
-            counter.innerText = target.toLocaleString();
-        }
-    };
-    updateCount();
-});
-
-/* SCROLL ANIMATION */
-const observer = new IntersectionObserver((entries) => {
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (!entry.isIntersecting) {
+            return;
+        } else {
             entry.target.classList.add('show');
+            observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
+}, appearOptions);
 
-document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
 });
-    
-
-/* DARK / LIGHT */
-function toggleMode(){
-    document.body.classList.toggle("light-mode");
-}
 </script>
+    
 
 </body>
 </html>
